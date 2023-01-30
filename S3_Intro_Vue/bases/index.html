@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.JS Intro</title>
+
+    <!-- Instalando Vue.js usando CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!-- Importando Vue.js --> 
+    
+</head>
+<body>
+    <!-- Aquí será montada la app de Vue -->
+    <div id="myApp">
+        <!-- Todo dentro de este div usa Vue, fuera no se utiliza -->
+        <h3> {{ quote }} </h3>
+        <blockquote> -{{ author }} </blockquote>
+
+        <!-- con el v-on:click le decimos a Vue que cuando se le dé click al botón se ejecute la función contenida en los methods de vue  -->
+        <button v-on:click="changeQuote">
+            Change quote
+        </button>
+
+    </div> 
+
+    <script src="./app.js"></script>
+</body>
+</html>
