@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Vue.JS Intro</title>
+
+    <!-- Instalando Vue.js usando CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!-- Importando Vue.js --> 
+    
 </head>
 <body>
-    <div id="myApp"></div> <!-- Aquí será montada la app de Vue -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!-- Importando Vue.js --> 
+    <!-- Aquí será montada la app de Vue -->
+    <div id="myApp">
+        <!-- Todo dentro de este div usa Vue, fuera no se utiliza -->
+        <h3> {{ quote }} </h3>
+        <blockquote> -{{ author }} </blockquote>
+    </div> 
+
     <script src="./app.js"></script>
 </body>
 </html>
