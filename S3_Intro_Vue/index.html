@@ -11,11 +11,16 @@
 <body>
     <!-- Aquí será montada la app de Vue -->
     <div id="myApp">
-        <h1>Batman quotes</h1>
+        <h1>Batman quotes <small> {{ newQuote }} </small>  </h1>
+        <input
+          type="text"
+          v-model="newQuote"
+          v-on:keyup.enter="addQuote"
+          >
 
         <ul>
-            <!-- vfor="primer elemto in/of elemento de data " -->
-            <!-- Aquí se hace sin la desestructuración de objetos 
+            <!-- vfor="primer elemto in/of elemento de data "
+             Aquí se hace sin la desestructuración de objetos 
             <li v-for="quote in quotes">
                 <span> {{ quote.quote }} </span>
                 <blockquote>-{{ quote.author }}</blockquote>
@@ -33,12 +38,11 @@
                 <blockquote> {{ index + 1 }} {{ quote.author }} </blockquote>
             </li>
             -->
-
+            <hr>
             <li v-for="({quote, author}, index ) in quotes">
                 <span> {{ index + 1 }} {{ quote }} </span>
-                <blockquote> {{ index + 1 }} {{ author }} </blockquote>
+                <blockquote> -{{ author }} </blockquote>
             </li>
-
         </ul>
     </div> 
 
