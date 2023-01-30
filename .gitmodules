@@ -1,0 +1,3 @@
+[submodule "S2_Refor_JS"]
+	path = S2_Refor_JS
+	url = git@github.com:WilPaD/S2_Refor_JS.git
