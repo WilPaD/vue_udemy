@@ -4,7 +4,6 @@
 
     <div>
         <button @click="increase"> +1 </button>
-    
         <button @click="decrease"> -1 </button>
     </div>
 </template>
@@ -12,11 +11,18 @@
 <script>
 export default {
 
-    props:[ 'title' ],
+    props:{
+        title: String,
+        start: {
+            type: Number,
+            default: 10
+            //required: true
+        }
+    },
     //name: 'Contador',
     data(){
         return {
-            counter: 5
+            counter: this.start
         }
     },
     methods: {
