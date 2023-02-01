@@ -1,5 +1,5 @@
 <template>
-    <h2>Counter</h2>
+    <h2> {{ customTitle }} </h2>
     <p> {{ counter }}<sup>2</sup> = {{ counter*counter }} </p>
 
     <div>
@@ -11,7 +11,9 @@
 
 <script>
 export default {
-    name: 'Contador',
+
+    props:[ 'title' ],
+    //name: 'Contador',
     data(){
         return {
             counter: 5
@@ -35,6 +37,16 @@ export default {
         squareCounter(){
             console.log('Se lanzó en computed')
             return this.counter * this.counter
+        },
+        customTitle(){
+            //Con ternario
+            return this.title ? this.title : 'Counter'
+            //Con if desglozado
+            if(this.title !== undefined){
+                return this.title
+            }else{
+                return 'Counter'
+            }
         }
     }
 }
