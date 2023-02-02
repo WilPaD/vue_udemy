@@ -9,7 +9,13 @@ describe('Componente Indecision', () => {
 
 
     //Solucionar error del fetch en node js
-    global.fetch = jest.fn()
+    global.fetch = jest.fn( () => Promise.resolve({
+        json: () => Promise.resolve({
+            answer: 'yes',
+            forced: false,
+            image: 'https://yesno.wtf/assets/yes/2.gif'
+        })
+    }))
 
     beforeEach(() => {
         wrapper = shallowMount( Indecision )
@@ -50,8 +56,14 @@ describe('Componente Indecision', () => {
 
     })
 
-    test('Pruebas en getAnswer', () => {
+    test('Pruebas en getAnswer', async() => {
+        await wrapper.vm.getAnswer()
 
+        const img = wrapper.find('img')
+
+        expect( img.exists() ).toBeTruthy()
+        expect( wrapper.vm.answer ).toBe('https://yesno.wtf/assets/yes/2.gif')
+        expect( wrapper.vm.image ).toBe('Si!')
     })
 
     test('pruebas en getAnswer - Fallo en el API', () => {
