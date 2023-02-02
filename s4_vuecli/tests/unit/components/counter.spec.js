@@ -1,7 +1,6 @@
 import {shallowMount, mount} from '@vue/test-utils'
 import Counter from '@/components/Counter'
 
-
 describe('Componente Counter', () => {
     /*
         test('Debe hacer match con el snapshot', () => {
@@ -27,7 +26,6 @@ describe('Componente Counter', () => {
     })
 
     test('El valor por defecto debe ser 100 en etiqueta p',() => {
-
         //wrapper
         const wrapper = shallowMount( Counter )
 
@@ -40,6 +38,32 @@ describe('Componente Counter', () => {
         //Expect
         expect( pTags.text() ).toBe('10')
 
+    })
 
+    test('Probando el botón incrementar', async() => {
+
+        const wrapper =shallowMount( Counter )
+
+        const increaseBtn = wrapper.find('button')
+
+        await increaseBtn.trigger('click')
+
+        let pTags = wrapper.find('[data-testid="counter"]').text()
+
+        expect( pTags ).toBe('11')
+
+
+        //Tarea probar 2 clicks en Decrease
+        const decreaseBtn = wrapper.findAll('button')[1]
+
+        await decreaseBtn.trigger('click')
+        await decreaseBtn.trigger('click')
+
+        pTags = wrapper.find('[data-testid="counter"]').text()        
+
+        expect( pTags ).toBe('9')
+
+
+        
     })
 })
