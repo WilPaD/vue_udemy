@@ -38,13 +38,19 @@ export default {
                 no: 'No!',
                 maybe: 'Tal vez...'
             }
+            try{
+                this.answer = 'Pensando ...'
 
-            this.answer = 'Pensando ...'
+                const {answer, image} = await fetch('https://yesno.wtf/api').then(r => r.json() )
 
-            const {answer, image} = await fetch('https://yesno.wtf/api').then(r => r.json() )
-
-            this.answer = idioma[answer]
-            this.image = image
+                this.answer = idioma[answer]
+                this.image = image    
+            }catch(error){
+                console.log('IndecisionComponent: ', error)
+                this.answer='No se pudo cargar el API'
+                this.image = null
+            }
+            
         }
     },
     watch:{
