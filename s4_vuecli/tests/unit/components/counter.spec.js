@@ -49,11 +49,35 @@ describe('Componente Counter', () => {
         await decreaseBtn.trigger('click')
         await decreaseBtn.trigger('click')
 
-        const pTags = wrapper.find('[data-testid="counter"]').text()        
+        const pTags = wrapper.find('[data-testid="counter"]').text()
 
         expect( pTags ).toBe('9')
+    })
+
+    //leer props del component.vue
+    test('Debe establecer valor por defecto', () => {
+        //Obteniendo propiedad start del componente counter
+        const { start } = wrapper.props()
+
+        const value = wrapper.find('[data-testid="counter"]').text()
+
+        expect( Number(value) ).toBe( start )
+    })
+
+    test('Debe mostrar la prop title', () => {
+        //Declaramos el valor para menos código en props
+        const title = 'Hola Mundo'
+
+        const wrapper = shallowMount( Counter, { 
+            //Aquí mandamos los propiedades en el componente
+            props: {
+                title
+            }
+         } )
+
+         //En el toBe ponemos el title porque además de ser el valor que mandamos, es el esperado 
+         expect( wrapper.find('h2').text()).toBe(title)
 
 
-        
     })
 })
