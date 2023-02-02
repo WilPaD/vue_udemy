@@ -4,8 +4,7 @@
 
     <div>
         <button @click="increase"> +1 </button>
-        <button @click="decrease"> -1 </button>
-        
+        <button @click="decrease"> -1 </button> 
     </div>
 </template>
 
