@@ -25,4 +25,21 @@ describe('Componente Counter', () => {
         expect( h2.text() ).toBe('Counter')
 
     })
+
+    test('El valor por defecto debe ser 100 en etiqueta p',() => {
+
+        //wrapper
+        const wrapper = shallowMount( Counter )
+
+        //pTags
+        //const pTags = wrapper.findAll('p').at(1) 
+
+        //Aquí encontramos la etiqueta mediante el indicador que le asignamos a la etiqueta p a probar
+        const pTags = wrapper.find('[data-testid="counter"]')
+
+        //Expect
+        expect( pTags.text() ).toBe('10')
+
+
+    })
 })
