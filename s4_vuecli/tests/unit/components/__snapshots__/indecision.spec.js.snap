@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Componente Indecision Debe hacer match con snapshot 1`] = `[Function]`;
+
 exports[`Componente Indecision Match con snapshot 1`] = `[Function]`;
