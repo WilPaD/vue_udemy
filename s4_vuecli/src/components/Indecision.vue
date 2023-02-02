@@ -51,9 +51,7 @@ export default {
         question(value, oldValue){
             this.isValidQuestion = false
 
-            if(!value.includes('?')) {
-                return
-            }
+            if(!value.includes('?')) return
             this.isValidQuestion = true
 
             this.getAnswer()
