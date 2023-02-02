@@ -2,6 +2,13 @@ import {shallowMount, mount} from '@vue/test-utils'
 import Counter from '@/components/Counter'
 
 describe('Componente Counter', () => {
+    //Crea la instancia del componente montado
+    let wrapper;
+
+    beforeEach(() => {
+        wrapper = shallowMount( Counter )
+    })
+
     /*
         test('Debe hacer match con el snapshot', () => {
         
@@ -11,9 +18,6 @@ describe('Componente Counter', () => {
     })
     */
     test('h2 debe mostrar el valor por defecto "Counter"', () => {
-
-        //Crea la instancia del componente montado
-        const wrapper = shallowMount( Counter )
 
         //Con este expect verificamos que la etiqueta h10 exista, para luego darle un valor con toBeTruthy
         //Esto sirve como condición para continuar con la prueba si es false, terminará y no continuará con la prueba
@@ -26,9 +30,6 @@ describe('Componente Counter', () => {
     })
 
     test('El valor por defecto debe ser 100 en etiqueta p',() => {
-        //wrapper
-        const wrapper = shallowMount( Counter )
-
         //pTags
         //const pTags = wrapper.findAll('p').at(1) 
 
@@ -41,25 +42,14 @@ describe('Componente Counter', () => {
     })
 
     test('Probando el botón incrementar', async() => {
-
-        const wrapper =shallowMount( Counter )
-
-        const increaseBtn = wrapper.find('button')
+        const [ increaseBtn, decreaseBtn ] = wrapper.findAll('button')
 
         await increaseBtn.trigger('click')
-
-        let pTags = wrapper.find('[data-testid="counter"]').text()
-
-        expect( pTags ).toBe('11')
-
-
         //Tarea probar 2 clicks en Decrease
-        const decreaseBtn = wrapper.findAll('button')[1]
-
         await decreaseBtn.trigger('click')
         await decreaseBtn.trigger('click')
 
-        pTags = wrapper.find('[data-testid="counter"]').text()        
+        const pTags = wrapper.find('[data-testid="counter"]').text()        
 
         expect( pTags ).toBe('9')
 
