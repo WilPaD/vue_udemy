@@ -15,6 +15,8 @@
     
     import getPokemonOptions from '@/helpers/getPokemonOptions'
 
+    console.log( getPokemonOptions() )
+    
     export default {
         components:{    
             PokemonPicture,
