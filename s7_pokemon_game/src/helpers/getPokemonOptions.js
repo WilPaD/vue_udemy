@@ -8,8 +8,7 @@ const getPokemons = () => {
 }
 
 const getPokemonOptions = async() => {
-     
-
+    //Con sort mezclamos el arreglo obtenido en getPokemon
     const mixedPokemons = getPokemons().sort( () => Math.random() - 0.5 )
      
     const pokemons = await getPokemonNames( mixedPokemons.splice(0,4) )
@@ -18,16 +17,16 @@ const getPokemonOptions = async() => {
 }
 
 const getPokemonNames = async( [a,b,c,d] = [] ) => {
-    const resp = await pokemonApi.get(`/1`)
-
-    const pormiseArr = [
+    
+    const promiseArr = [
         pokemonApi.get(`/${a}`),
         pokemonApi.get(`/${b}`),
         pokemonApi.get(`/${c}`),
         pokemonApi.get(`/${d}`)
     ]
-
-    const [ p1, p2, p3, p4]  = await Promise.all( arrPromise )
+    
+    
+    const [ p1, p2, p3, p4]  = await Promise.all( promiseArr )
 
     return [
         {name: p1.data.name, id: p1.data.id },
