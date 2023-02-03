@@ -56,7 +56,7 @@
                 }else{
                     this.message = `Oops, era ${ this.pokemon.name }`
                 }
-
+                
             },
             newGame(){
                 this.showPokemon = false
