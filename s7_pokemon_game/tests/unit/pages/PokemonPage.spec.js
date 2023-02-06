@@ -72,13 +72,42 @@ describe('PokemonPage Component', () => {
         expect( options.attributes('pokemons') ).toBeTruthy()
     })
 
+    test('pruebas para checkAnserw', async() => {
+        const wrapper = shallowMount( PokemonPage, {
+            data(){
+                return{
+                    pokemonArr: pokemons,
+                    pokemon: pokemons[0],
+                    showPokemon: false,
+                    showAnswer: false,
+                    message: ''
+                }
+            }
+        })
 
+        //Si enviamos un dato a una función dentro del componente
+        // teenemos que esperar a que renderice el componente de nuevo
+        // Por lo tanto esto se vuelve asincrono
+        await wrapper.vm.checkAnswer(1)
 
+        //Verificamos que el h2 se haya montado luego de ejecutar la función
+        // checkAnswer
+        expect(wrapper.find('h2').exists()).toBeTruthy()
 
+        expect(wrapper.vm.showPokemon).toBeTruthy()
 
+        expect( wrapper.find('h2').text() ).toBe(`Correcto, ${ pokemons[0].name }`)
+        
 
+        await wrapper.vm.checkAnswer(6)
 
+        expect(wrapper.vm.message).toBe(`Oops, era ${ pokemons[0].name }`)
+        //const fnd = wrapper.find('h2')
+        
+        //expect()
 
+        //expect( wrapper.find('h2').text() ).toBe(`Oops, era ${ this.pokemon[0].name }`)
 
+    })
 
 })
