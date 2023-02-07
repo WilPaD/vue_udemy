@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
+    //Aquí estamos usando el LazyLoad para cargar las páginas
     { 
         path: '/', 
         component: () => import(/* webpackChunkName: 'ListPage' */ '@/modules/pokemon/pages/ListPage')
