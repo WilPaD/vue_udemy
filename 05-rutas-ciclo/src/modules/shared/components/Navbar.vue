@@ -1,8 +1,8 @@
 <template>
     <div>
-        <RouterLink to="/">Pokemon List</RouterLink>
-        <RouterLink to="/id">Pokemon ID</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink :to="{ name: 'home' }">Pokemon List</RouterLink>
+        <RouterLink :to="{ name: 'pokemon-id', params: { id: 10 }}">Pokemon ID</RouterLink>
+        <RouterLink :to="{ name: 'about' }">About</RouterLink>
     </div>
 </template>
 
