@@ -3,30 +3,32 @@
     <hr>
     <h2>{{ name }}</h2>
     <button @click="onChangeName">
-        Cambiar Nombre
+        Cambiar nombre
     </button>
-
 </template>
 
-<script>
 
+<script>
 export default {
 
-    data(){
-        return{
-            name: 'Wilbert'
+    data() {
+        return {
+            name: 'Fernando'
         }
     },
-    methods:{
-        onChangeName(){
-            this.name = 'José'
+    methods: {
+        onChangeName() {
+            this.name = 'Melissa'
         }
     },
+
     beforeCreate() {
         console.log('beforeCreate')
     },
     created() {
+        this.name = 'Juan Carlos'
         console.log('created')
+        // Peticiones HTTP
     },
     beforeMount() {
         console.log('beforeMount')
@@ -38,13 +40,13 @@ export default {
         console.log('beforeUpdate')
     },
     updated() {
-        console.log('update')
+        console.log('updated')
     },
     activated() {
         console.log('activated')
     },
     deactivated() {
-        console.log('deactivate')
+        console.log('deactivated')
     },
     beforeUnmount() {
         console.log('beforeUnmount')
@@ -60,12 +62,6 @@ export default {
     },
     renderTriggered() {
         console.log('renderTriggered')
-    }   
-
+    },
 }
-
 </script>
-
-<style>
-    
-</style>

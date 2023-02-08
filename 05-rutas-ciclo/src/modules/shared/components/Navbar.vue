@@ -1,52 +1,56 @@
 <template>
     <div>
-        <!--
-        <RouterLink :to="{ name: 'home' }">Pokemon List</RouterLink>
-        <RouterLink :to="{ name: 'pokemon-id', params: { id: 10 }}">Pokemon ID</RouterLink>
-        <RouterLink :to="{ name: 'about' }">About</RouterLink>
-        -->
-        <CustomLink
-            v-for="link in links" 
+        <!-- <router-link :to="{ name: 'home' }">Pokemon List</router-link>
+        <router-link :to="{ name: 'pokemon-id', params: { id: 85 }}">Pokemon por id</router-link>
+        <router-link :to="{ name: 'about' }">About</router-link> -->
+        <CustomLink 
+            v-for="link in links"
             :key="link.to"
             :link="link"
         />
     </div>
 </template>
+
 <script>
-import { defineAsyncComponent } from 'vue';
+import { defineAsyncComponent } from 'vue'
 
 export default {
-    data(){
-        return{
-            links:[
-                { to: '/home', name: 'Pokemons' },
-                { to: '/pokemonid/50', name: 'Por ID' },
-                { to: '/about', name: 'About' },
+
+    data() {
+        return {
+            links: [
+                { to: 'pokemon-home', name: 'Pokemons' },
+                { to: 'pokemon-id', name: 'Por ID', id: 151 },
+                { to: 'pokemon-about', name: 'About' },
+                
+                { to: 'dbz-characters', name: 'Personajes' },
+                { to: 'dbz-about', name: 'DBZ-About' },
+
                 { to: 'https://google.com', name: 'Google' },
             ]
         }
     },
-    components:{
+
+    components: {
         CustomLink: defineAsyncComponent(() => import('./CustomLink.vue'))
-    }        
+    }
 }
-
-
 </script>
+
 <style scoped>
 
 div {
     padding: 0 30px;
 }
 
-div a{
+div a {
     font-weight: bold;
     color: #2c3e50;
     margin: 0 10px;
 }
-/*
-a.router-link-exact-active{
-    color: #42b983
-}
-*/
+
+/* a.router-link-exact-active {
+    color: #42b983;
+} */
+
 </style>
