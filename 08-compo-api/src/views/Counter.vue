@@ -6,7 +6,7 @@
     <button @click="decrease"> -1 </button>
 </template>
 <script>
-import { ref } from 'vue';
+
 import useCounter from '@/composables/useCounter'
 
 export default {

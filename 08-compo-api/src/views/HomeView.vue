@@ -16,10 +16,8 @@
 </template>
 
 <script>
-import { ref } from 'vue'
-
 // @ is an alias to /src
-import { Ref, reactive } from 'vue'
+import { ref, reactive } from 'vue'
 
 export default {
   name: 'HomeView',
