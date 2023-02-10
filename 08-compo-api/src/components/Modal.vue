@@ -1,19 +1,34 @@
 <template>
-    <div class="modal-background fade-in">
+    <div class="modal-background fade-in" 
+        @click.self="$emit('on:close')">
+        
         <div class="modal-container">
-            <h1>Hola Mundo</h1>
+
+            <slot name="header" />
+            <slot name="body" />
+            <slot name="footer" />
+
+            <!-- <slot /> -->
+            <!-- <slot>
+                <div class="center">
+                    Esto aparecerá si no hay contenido 
+                </div> 
+            </slot> -->
+
         </div>
     </div>
 </template>
 
 <script>
-    export default {
-        
+export default {
+    emits: ['on:close'],
+    setup(props, context) {
+        console.log({props, context})
     }
+}
 </script>
 
 <style scoped>
-
 .modal-background {
     position: fixed;
     top: 0;
@@ -46,36 +61,60 @@
 
 
 .fade-in {
-  animation: fadeIn ease-out 0.2s;
-  -webkit-animation: fadeIn ease-out 0.2s;
-  -moz-animation: fadeIn ease-out 0.2s;
-  -o-animation: fadeIn ease-out 0.2s;
-  -ms-animation: fadeIn ease-out 0.2s;
+    animation: fadeIn ease-out 0.2s;
+    -webkit-animation: fadeIn ease-out 0.2s;
+    -moz-animation: fadeIn ease-out 0.2s;
+    -o-animation: fadeIn ease-out 0.2s;
+    -ms-animation: fadeIn ease-out 0.2s;
 }
 
 @keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @-moz-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @-webkit-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @-o-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @-ms-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
+    0% {
+        opacity: 0;
+    }
 
+    100% {
+        opacity: 1;
+    }
+}
 </style>
