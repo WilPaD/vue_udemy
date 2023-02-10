@@ -20,8 +20,20 @@ export default createStore({
     completedTodos: (state) => {
       return state.todo.filter(t => t.completed)
     },
+    //La función regresa otra función 
+    getTodosByTab: ( _ , getters) => ( tab ) => {
+      switch ( tab ) {
+        case 'all': return getters.allTodos
+        case 'pendding': return getters.pendingTodos
+        case 'completed': return getters.completedTodos
+      }
+    }
   },
   mutations: {
+    toggleTodo(state, id){
+      const todoIdx = state.todo.findIndex( t => t.id === id)
+      state.todo[todoIdx].completed = !state.todo[todoIdx].completed
+    }
   },
   actions: {
   },

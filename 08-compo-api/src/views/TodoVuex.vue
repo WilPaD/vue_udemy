@@ -4,35 +4,71 @@
     <!-- <h4>Pendientes: {{ $store.state.todo.filter(t => !t.completed).length }}</h4> -->
     <h4>Pendientes usando Getters: {{ pendding.length }}</h4>
 
+    <hr>
+    <button :class="{ 'active': currentTab === 'all' }" @click="currentTab = 'all'">
+        Todos
+    </button>
 
-    <h4>Todas las tareas: {{ all.length }}</h4>
-    <h4>Tareas Completadas: {{ completed.length }}</h4>
+    <button :class="{ 'active': currentTab === 'pendding' }" @click="currentTab = 'pendding'">
+        Pendientes
+    </button>
+
+    <button :class="{ 'active': currentTab === 'completed' }" @click="currentTab = 'completed'">
+        Completados
+    </button>
+
+    <div>
+        <ul>
+            <li v-for="todo in getTodoByTab" :key="todo.id" :class="{ 'completed': todo.completed }"
+                @dblclick="tooggleTodo(todo.id)">
+                {{ todo.text }}
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
-import { computed } from 'vue'
-import { useStore } from 'vuex';
 
-    export default {
-       setup(){
+import useTodo from '@/composables/useTodos'
 
-        const store = useStore()
+export default {
+    setup() {
 
-        const pendding = computed( () => store.getters['pendingTodos'] )
-        
-        const all = computed(() => store.getters['allTodos'] )
-        const completed = computed(() => store.getters['completedTodos'])
-       
-        return{
-            all,
-            completed,
+        const { pendding, currentTab, getTodoByTab, tooggleTodo } = useTodo()
+
+        return {
             pendding,
-        }
+            currentTab,
 
-       } 
+            getTodoByTab,
+            tooggleTodo
+        }
     }
+}
 </script>
 
-<style>
+<style scoped>
+div {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
 
+ul {
+    width: 300px;
+    text-align: left;
+}
+
+li {
+    cursor: pointer;
+}
+
+.active {
+    background-color: #2c3e50;
+    color: white;
+}
+
+.completed {
+    text-decoration: line-through;
+}
 </style>
