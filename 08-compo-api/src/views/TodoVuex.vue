@@ -25,21 +25,59 @@
             </li>
         </ul>
     </div>
+
+    <button @click="isOpen = true"> Crear Todo </button>
+
+    <modal v-if="isOpen" @on:close="isOpen = false">
+        
+        <template v-slot:title>
+            <h2>Agregar Tarea</h2>
+        </template>
+        <template v-slot:form>
+            <form @submit.prevent="onSubmit(textTodo)">
+                <p>Por favor describe la tarea a agregar</p>
+                <input type="text" 
+                  placeholder="Tarea a agregar" 
+                  v-model="textTodo"
+                >
+                <br>
+                <br>
+                <button type="submit">Agregar Tarea</button>
+            </form>
+        </template>
+    </modal>
 </template>
 
 <script>
 
 import useTodo from '@/composables/useTodos'
+import Modal from '@/components/ModalTodo.vue'
 
 export default {
-    setup() {
+    components: { Modal },
+    setup() { 
+        
+        const {
+            pendding, 
+            currentTab, 
+            getTodoByTab, 
+            tooggleTodo, 
 
-        const { pendding, currentTab, getTodoByTab, tooggleTodo } = useTodo()
+            //Variables y método para agregar tareas
+            isOpen, 
+            onSubmit,
+            textTodo 
+
+        } = useTodo()
 
         return {
+            isOpen,
+            textTodo,
+            onSubmit,
+
+
             pendding,
             currentTab,
-
             getTodoByTab,
             tooggleTodo
         }

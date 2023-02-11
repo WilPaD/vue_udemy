@@ -17,6 +17,10 @@
         <template v-slot:footer>
             <button @click="closeModal">Salir</button>
         </template>
+
+        <template v-slot:exposed="{ newTitle }">
+            <h2>{{ newTitle }}</h2>
+        </template>
     </modal>
 </template>
 

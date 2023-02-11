@@ -1,38 +1,16 @@
 <template>
-    <div class="modal-background fade-in" 
-        @click.self="$emit('on:close')">
-        
+    <div class="modal-background fade-in" @click.self="$emit('on:close')">
         <div class="modal-container">
-
-            <slot name="header" />
-            <slot name="body" />
-            <slot name="footer" />
-
-            <slot name="exposed" :newTitle="newTitle" hola="Mundo"></slot>
-
-            <!-- <slot /> -->
-            <!-- <slot>
-                <div class="center">
-                    Esto aparecerá si no hay contenido 
-                </div> 
-            </slot> -->
-
+            <slot name="title" />
+            <slot name="form"/>
         </div>
     </div>
 </template>
 
 <script>
-export default {
-    props:['title'],
-    emits: ['on:close'],
-    setup(props, context) {
-        console.log({props, context})
-
-        return{
-            newTitle: props.title?.toUpperCase()
-        }
+    export default {
+        
     }
-}
 </script>
 
 <style scoped>
